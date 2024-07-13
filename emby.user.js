@@ -5,7 +5,7 @@
 // @description  try to take over the world!
 // @author       You
 // @match        https://missav.com/cn/*
-// @match        https://missav.com/cn/
+// @match        https://missav.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=missav.com
 // @grant        none
 // ==/UserScript==
@@ -21,11 +21,17 @@ const api="5db9b4ef4d684cb0b862a5f9968a094c";
 //用户id，从此获取http://192.168.5.200:39096/Users/Public
 const user_id="d844e2e9c55d4828a26dbec2b6dbea03"
 
+//从url中获取番号，无码有问题
+//var website_url = window.location.href;
+//var jav_code = website_url.split('/').pop();
 
-var website_url = window.location.href;
-// 样例const website_url = "https://missav.com/dm16/cn/nsfs-295";
-var jav_code = website_url.split('/').pop();
+var jav_code='xxx';
+const h1Elements = document.querySelectorAll('h1.text-base.lg\\:text-lg.text-nord6');
+h1Elements.forEach(function(h1) {
+    jav_code=h1.textContent.split(" ")[0];
+});
 
+console.info(jav_code);
 // 配置搜索参数
 var params = {
     api_key: api,
